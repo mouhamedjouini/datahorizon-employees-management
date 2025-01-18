@@ -1,0 +1,81 @@
+/* Make the table responsive with horizontal scrolling */
+.table-responsive {
+  overflow-x: auto;
+}
+
+/* Table styling */
+.table th, .table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Ensure the profile images are consistently styled */
+.img-thumbnail {
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.img-thumbnail:hover {
+  transform: scale(1.1);
+}
+
+/* Adjust pagination styling for smaller screens */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pagination .page-item {
+  margin: 0.2rem;
+}
+
+.pagination .page-link {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.pagination .page-link:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .table th, .table td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .table th {
+    white-space: nowrap;
+  }
+
+  /* Stack pagination items vertically on small screens */
+  .pagination {
+    flex-direction: column;
+  }
+
+  .pagination .page-item {
+    margin-bottom: 0.5rem;
+  }
+
+  .pagination .page-link {
+    font-size: 1.1rem;
+  }
+}

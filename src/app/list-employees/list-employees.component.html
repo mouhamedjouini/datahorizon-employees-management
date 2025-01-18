@@ -1,0 +1,60 @@
+<div class="container mt-4 ">
+  <div class="table-responsive">
+    <table class="table table-striped ">
+      <thead class="table-primary">
+        <tr>
+          <th>Profile Picture</th>
+          <th (click)="sortData('firstName')">First Name <span [class]="getSortIcon('firstName')"></span></th>
+          <th (click)="sortData('lastName')">Last Name <span [class]="getSortIcon('lastName')"></span></th>
+          <th>Email</th>
+          <th>Contact Number</th>
+          <th (click)="sortData('dob')">Date of Birth <span [class]="getSortIcon('dob')"></span></th>
+          <th>Age</th>
+          <th (click)="sortData('salary')">Salary <span [class]="getSortIcon('salary')"></span></th>
+          <th>Address</th>
+          <th>Url Picture</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (employee of paginatedEmployees; track $index) {
+        <tr >
+          <td>
+            <img
+              [src]=" 'assets/pdp.png'"
+              alt="Profile Picture"
+              class="img-thumbnail"
+              style="width: 50px; height: 50px;"
+            />
+          </td>
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.contactNumber }}</td>
+          <td>{{ employee.dob | date: 'shortDate' }}</td>
+          <td>{{ employee.age }}</td>
+          <td>{{ employee.salary }}</td>
+          <td>{{ employee.address }}</td>
+          <td>{{ employee.imageUrl }}</td>
+        </tr>
+      }
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <button class="page-link" (click)="previousPage()">Previous</button>
+      </li>
+      <li class="page-item" *ngFor="let i of [].constructor(totalPages); let index = index" [class.active]="currentPage === index + 1">
+        <button class="page-link" (click)="currentPage = index + 1; updatePaginatedEmployees()">
+          {{ index + 1 }}
+        </button>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <button class="page-link" (click)="nextPage()">Next</button>
+      </li>
+    </ul>
+  </nav>
+</div>
